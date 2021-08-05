@@ -1,0 +1,38 @@
+package Selenium4Features;
+
+import java.awt.AWTException;
+import java.util.List;
+ 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+public class Demo2 {
+
+	public static void main(String[] args) throws AWTException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\HP\\drivers2\\chromedriver.exe");
+		 WebDriver driver = new ChromeDriver();
+	        // Loading URL
+	        driver.get("http://content.werally.com/");
+	        // Mentioning type of Log 
+	        LogEntries entry = driver.manage().logs().get(LogType.BROWSER);
+	        // Retrieving all log 
+	        List<LogEntry> logs= entry.getAll();
+	        for(LogEntry e: logs)
+	        {
+	        	System.out.println(e);
+	        }
+	        
+	        // Printing details separately 
+	        for(LogEntry e: logs)
+	        {
+	        	System.out.println("Message is: " +e.getMessage());
+	        	System.out.println("Level is: " +e.getLevel());
+	        }
+	       
+
+	}
+
+}

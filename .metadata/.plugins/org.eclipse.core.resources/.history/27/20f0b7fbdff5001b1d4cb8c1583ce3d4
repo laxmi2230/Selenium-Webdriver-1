@@ -1,0 +1,5 @@
+package SeleniumSessions;
+
+public @interface Test {
+
+}

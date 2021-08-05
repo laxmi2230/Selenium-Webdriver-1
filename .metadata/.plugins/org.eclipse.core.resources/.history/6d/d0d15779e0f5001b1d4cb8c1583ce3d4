@@ -1,0 +1,46 @@
+package SeleniumSessions;
+
+
+import java.util.Date;
+import java.util.logging.Level;
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+
+public class DemoAutomation {
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ChromeDriver driver = new ChromeDriver();
+		DesiredCapabilities capibilities = DesiredCapabilities.chrome();
+		LoggingPreferences logginPreferences = new LoggingPreferences();
+		logginPreferences.enable(LogType.BROWSER, Level.ALL);
+		capibilities.setCapability(CapabilityType.LOGGING_PREFS, logginPreferences);
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\HP\\drivers2\\chromedriver.exe");
+		driver = new ChromeDriver(capibilities);
+		driver.get("http://www.youtube.com");
+		
+		
+		LogEntries logEntries = driver.manage().logs().get(LogType.BROWSER);
+		for(LogEntry entry : logEntries) {
+			System.out.println(new Date(entry.getTimestamp() + " " + entry.getLevel() + " " + entry.getMessage()));
+		}
+		
+    	driver.quit();
+			
+
+	}
+	
+	
+	
+}

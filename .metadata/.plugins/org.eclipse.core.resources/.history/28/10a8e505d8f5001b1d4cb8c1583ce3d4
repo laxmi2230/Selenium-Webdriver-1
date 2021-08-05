@@ -1,0 +1,5 @@
+package org.testing.annotations;
+
+public class BeforeMethod {
+
+}
